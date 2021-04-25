@@ -2,7 +2,7 @@ import 'package:devquiz/home/home_repository.dart';
 import 'package:devquiz/home/home_state.dart';
 import 'package:devquiz/models/quiz_model.dart';
 import 'package:devquiz/models/user_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HomeController {
   final stateNotifier = ValueNotifier<HomeState>(HomeState.EMPTY);
