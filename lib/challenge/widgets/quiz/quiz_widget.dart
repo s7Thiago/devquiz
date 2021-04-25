@@ -15,16 +15,20 @@ class QuizWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 64),
-          Text(
-            question.title,
-            style: AppTextStyles.heading,
+          Flexible(child: SizedBox(height: 64)),
+          Flexible(
+            child: Text(
+              question.title,
+              style: AppTextStyles.heading,
+            ),
           ),
-          SizedBox(height: 24),
+          Flexible(child: SizedBox(height: 24)),
           ...question.answers
-              .map((e) => AnswerWidget(
-                    title: e.title,
-                    isRight: e.isRight,
+              .map((e) => Flexible(
+                    child: AnswerWidget(
+                      title: e.title,
+                      isRight: e.isRight,
+                    ),
                   ))
               .toList()
         ],
