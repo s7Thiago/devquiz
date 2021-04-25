@@ -3,6 +3,7 @@ import 'package:devquiz/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:devquiz/challenge/widgets/question_indicator/question_indicator.dart';
 import 'package:devquiz/challenge/widgets/quiz/quiz_widget.dart';
 import 'package:devquiz/models/question_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ChallengePage extends StatefulWidget {
@@ -15,10 +16,22 @@ class ChallengePage extends StatefulWidget {
 
 class _ChallengePageState extends State<ChallengePage> {
   final _controller = ChallengeController();
+  final _pageController = PageController();
 
   @override
   void initState() {
+    _pageController.addListener(() {
+      _controller.currentPage = _pageController.page!.toInt() + 1;
+    });
     super.initState();
+  }
+
+  nextPage() {
+    _pageController.nextPage(
+      duration: Duration(milliseconds: 100),
+      curve: Curves.linear,
+    );
+    print('testando');
   }
 
   @override
@@ -32,16 +45,25 @@ class _ChallengePageState extends State<ChallengePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BackButton(),
-              QuestionIndicatorWidget(
-                currentPage: _controller.currentPage,
-                length: widget.questions.length,
+              ValueListenableBuilder<int>(
+                valueListenable: _controller.currentPageNotifier,
+                builder: (context, value, _) => QuestionIndicatorWidget(
+                  currentPage: value,
+                  length: widget.questions.length,
+                ),
               ),
             ],
           ),
         ),
       ),
-      body: QuizWidget(
-        question: widget.questions[0],
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        children: widget.questions
+            .map((question) => QuizWidget(
+                  question: question,
+                ))
+            .toList(),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -51,8 +73,11 @@ class _ChallengePageState extends State<ChallengePage> {
             children: [
               Expanded(
                 child: NextButtonWidget.white(
-                  label: 'Fácil',
-                  onTap: () {},
+                  label: 'Pular',
+                  onTap: () {
+                    nextPage();
+                    print('print on button');
+                  },
                 ),
               ),
               SizedBox(width: 7),
