@@ -1,4 +1,4 @@
-import 'package:devquiz/challenge/widgets/quiz/quiz_widget.dart';
+import 'package:devquiz/challenge/challenge_page.dart';
 import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/home/home_controller.dart';
 import 'package:devquiz/home/home_state.dart';
@@ -35,14 +35,17 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  LevelButtonWidget(label: 'Fácil'),
-                  LevelButtonWidget(label: 'Médio'),
-                  LevelButtonWidget(label: 'Difícil'),
-                  LevelButtonWidget(label: 'Perito'),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LevelButtonWidget(label: 'Fácil'),
+                    LevelButtonWidget(label: 'Médio'),
+                    LevelButtonWidget(label: 'Difícil'),
+                    LevelButtonWidget(label: 'Perito'),
+                  ],
+                ),
               ),
               SizedBox(height: 24),
               Expanded(
@@ -51,12 +54,25 @@ class _HomePageState extends State<HomePage> {
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   children: _controller.quizzes!
-                      .map((e) => QuizCardWidget(
-                            title: e.title,
-                            completed:
-                                '${e.questionAnswered} / ${e.questions.length}',
-                            percent: e.questionAnswered / e.questions.length,
-                          ))
+                      .map(
+                        (e) => QuizCardWidget(
+                          title: e.title,
+                          completed:
+                              '${e.questionAnswered} / ${e.questions.length}',
+                          percent: e.questionAnswered / e.questions.length,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Hero(
+                                  tag: 'challenge',
+                                  child: ChallengePage(questions: e.questions),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      )
                       .toList(),
                 ),
               )
