@@ -9,8 +9,13 @@ import 'package:flutter/material.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
+  final String title;
 
-  const ChallengePage({Key? key, required this.questions}) : super(key: key);
+  const ChallengePage({
+    Key? key,
+    required this.questions,
+    required this.title,
+  }) : super(key: key);
   @override
   _ChallengePageState createState() => _ChallengePageState();
 }
@@ -33,6 +38,15 @@ class _ChallengePageState extends State<ChallengePage> {
         duration: Duration(milliseconds: 100),
         curve: Curves.linear,
       );
+  }
+
+  // Incrementa no controller se a resposta escolhida estiver correta
+  onSelected(bool value) {
+    if (value) {
+      _controller.qtdAnswersRight++;
+    }
+
+    nextPage();
   }
 
   @override
@@ -63,9 +77,7 @@ class _ChallengePageState extends State<ChallengePage> {
         children: widget.questions
             .map((question) => QuizWidget(
                   question: question,
-                  onChange: () {
-                    nextPage();
-                  },
+                  onSelected: onSelected,
                 ))
             .toList(),
       ),
@@ -91,9 +103,14 @@ class _ChallengePageState extends State<ChallengePage> {
                     child: NextButtonWidget.green(
                       label: 'Confirmar',
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => ResultPage()),
+                          MaterialPageRoute(
+                              builder: (context) => ResultPage(
+                                    title: widget.title,
+                                    length: widget.questions.length,
+                                    result: _controller.qtdAnswersRight,
+                                  )),
                         );
                       },
                     ),

@@ -21,7 +21,7 @@ class QuizCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: 'challenge',
+      tag: 'challenge-${this.title}',
       child: Material(
         color: AppColors.white,
         elevation: 1,
