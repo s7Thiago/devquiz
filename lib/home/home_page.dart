@@ -65,8 +65,11 @@ class _HomePageState extends State<HomePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Hero(
-                                  tag: 'challenge',
-                                  child: ChallengePage(questions: e.questions),
+                                  tag: 'challenge-${e.title}',
+                                  child: ChallengePage(
+                                    questions: e.questions,
+                                    title: e.title,
+                                  ),
                                 ),
                               ),
                             );
