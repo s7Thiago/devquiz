@@ -4,7 +4,7 @@ A Flutter app developed over 5 days during Rocketseat's NLW # 5 week that aims t
 
 ## Project Status
 
-This project is just a personal showcase, done with de aim of  register what i have stidied, and show my skills. It may receives improvements in the fufute.
+This project is just a personal showcase, done with de aim of  register what i have studied, and show my skills. It may receives improvements in the future.
 
 ## Project Screen Shots
 
