@@ -8,13 +8,15 @@ This project is just a personal showcase, done with de aim of  register what i h
 
 ## Project Screen Shots
 
-| Splash Screen                                                                      | Home Screen                                  | Challenge Screen                                    |
-| ---------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------- |
-| <img title="" src="assets/images/screenshots/Splash.png" alt="splash" width="752"> | ![image](assets\images\screenshots\Home.png) | ![challenge](assets\images\screenshots\Desafio.png) |
+| Splash Screen                                                                | Home Screen                             | Home Screen(zero data)                             |
+| ---------------------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------- |
+| <img title="" src="assets/images/screenshots/Splash.png" alt="" width="772"> | ![](assets/images/screenshots/Home.png) | ![](assets/images/screenshots/Home(zero-data).png) |
 
-| Question Right Screen                         | Question Wrong Screen                          | Result Screen                                     |
-| --------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
-| ![right](assets\images\screenshots\Certo.png) | ![wrong](assets\images\screenshots\Errado.png) | ![result](assets\images\screenshots\Parabéns.png) |
+## 
+
+| Rigth Answer Screen                      | Wrong Answer Screen                       | Result Screen                               |
+| ---------------------------------------- | ----------------------------------------- | ------------------------------------------- |
+| ![](assets/images/screenshots/Certo.png) | ![](assets/images/screenshots/Errado.png) | ![](assets/images/screenshots/Parabéns.png) |
 
 ## what's in this project
 
