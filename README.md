@@ -20,7 +20,7 @@ This project is just a personal showcase, done with de aim of  register what i h
 
 ## what's in this project
 
-<img title="" src="assets/images/screenshots/Home.png" alt="image" width="271" data-align="center">
+<img title="" src="assets/images/screenshots/devquiz.gif" alt="image" width="271" data-align="center">
 
 ## Installation and Setup Instructions
 
